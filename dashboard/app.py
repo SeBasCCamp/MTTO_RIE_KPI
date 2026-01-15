@@ -1,12 +1,17 @@
 import pandas as pd
 import streamlit as st
 import plotly.express as px
+from pathlib import Path
 
-st.set_page_config(page_title="Mantenimiento - RIE", layout="wide")
+ROOT = Path(__file__).resolve().parent.parent   # mtto_rie/
+DATA_PROCESADOS = ROOT / "data" / "procesados"
 
-BASE_PATH = "../data/procesados/"
-base = pd.read_csv(BASE_PATH + "base_kpis_turno.csv", parse_dates=["FECHA"])
-kpis = pd.read_csv(BASE_PATH + "kpis_por_equipo.csv")
+base = pd.read_csv(DATA_PROCESADOS / "base_kpis_turno.csv", parse_dates=["FECHA"])
+kpis_equipo = pd.read_csv(DATA_PROCESADOS / "kpis_por_equipo.csv")
+alerta_dm = pd.read_csv(DATA_PROCESADOS / "alerta_dm_bajo.csv")
+alerta_rt = pd.read_csv(DATA_PROCESADOS / "alerta_confiabilidad_baja.csv")
+alerta_paradas = pd.read_csv(DATA_PROCESADOS / "alerta_paradas_altas.csv")
+alerta_prev = pd.read_csv(DATA_PROCESADOS / "alerta_preventivos_no_ejecutados.csv")
 
 st.title("Dashboard de Mantenimiento")
 
