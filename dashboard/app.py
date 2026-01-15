@@ -3,6 +3,11 @@ import streamlit as st
 import plotly.express as px
 from pathlib import Path
 
+st.set_page_config(
+    page_title="Dashboard de Mantenimiento",
+    layout="wide"
+)
+
 ROOT = Path(__file__).resolve().parent.parent   # mtto_rie/
 DATA_PROCESADOS = ROOT / "data" / "procesados"
 
